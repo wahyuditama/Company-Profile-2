@@ -1,23 +1,39 @@
 <?php 
 include 'koneksi.php' ;
-
+session_start();
 if (isset($_POST['simpan'])) {
     $nama = $_POST['nama'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    if(!isset($_FILES['foto']['name']) {
-        $nama_foto = $_FILES['foto']['size']''
-    }
+    if(!empty($_FILES['foto']['name'])) {
+        $nama_foto = $_FILES['foto']['name'];
+        $ukuran_foto = $_FILES['foto']['size'];
 
-    $sql = "INSERT INTO users (nama,email,password) VALUES ('$nama','$email','$password')";
-    $result = mysqli_query($koneksi, $sql);
-    
+        //img extension
+        $ext = array('png','jpg','jpeg');
+        $extFoto = pathinfo($nama_foto, PATHINFO_EXTENSION);
+
+        //Jika Extensi Foto tidak ada yang terdaftar di array extension
+    if(!in_array($extFoto, $ext)) {
+            echo 'Extention Tidak Ditemukan';
+            die();
+        }else{
+            // pindahkan gambar 
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'upload/'.$nama_foto);
+            $sql = "INSERT INTO users (nama,email,password,foto) VALUES ('$nama','$email','$password','$nama_foto')";
+            $result = mysqli_query($koneksi, $sql);
+        }
+    }else{
+        $sql = "INSERT INTO users (nama,email,password) VALUES ('$nama','$email','$password')";
+        $result = mysqli_query($koneksi, $sql);
+    }
     if ($result) {
         header("Location: user.php");
     }else {
         echo "Error disimpan";
         echo mysqli_error($koneksi);
     }
+
 
 }
 // Parameter Edit

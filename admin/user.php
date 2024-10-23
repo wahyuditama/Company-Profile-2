@@ -1,5 +1,6 @@
 <?php 
 include 'koneksi.php' ;
+session_start();
 // Munculkan / Pilih sebuah kolom dari tabel users(database)
 $queryUser = mysqli_query($koneksi, "SELECT * FROM users ");
 //untuk menjadikan hasil query(data dari queryUser) = menjadi sebuah data objek

@@ -1,4 +1,12 @@
-<nav
+  <?php
+  include 'koneksi.php';
+
+  $id = $_SESSION['id'];
+  $sqlLoginUser = mysqli_query($koneksi , "SELECT * FROM users WHERE id = '$id'");
+  $rowLoginUser = mysqli_fetch_assoc($sqlLoginUser);
+  ?>
+  
+  <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
@@ -41,7 +49,8 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../asset/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <!-- panggil foto di folder upload dengan php -->
+                      <img src="upload/<?php echo $rowLoginUser['foto'] ?>" alt class="w-px-40 h-auto rounded-circle" /> 
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -50,7 +59,8 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../asset/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="upload/<?php echo $rowLoginUser['foto'] ?>" alt class="w-px-40 h-auto rounded-circle" />
+                                <!-- panggil foto di folder upload dengan php -->
                             </div>
                           </div>
                           <div class="flex-grow-1">
