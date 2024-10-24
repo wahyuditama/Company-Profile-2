@@ -4,3 +4,4 @@
     <script src="asset/depan/lib/easing/easing.min.js"></script>
     <script src="asset/depan/lib/waypoints/waypoints.min.js"></script>
     <script src="asset/depan/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="asset/depan/js/main.js"></script>

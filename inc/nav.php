@@ -1,14 +1,21 @@
+<?php 
+include 'admin/koneksi.php';
+// mengambil data dari database general setting
+
+$querySetting = mysqli_query($koneksi, "SELECT * FROM general_setting ORDER BY id DESC ");
+$rowSetting = mysqli_fetch_assoc($querySetting);
+?>
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>
+           <img src="admin/upload/<?php echo $rowSetting['logo'] ?>" alt="" width="100">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="index.php" class="nav-item nav-link active">Home</a>
                 <a href="about.php" class="nav-item nav-link">About</a>
                 <a href="contact.php" class="nav-item nav-link">Courses</a>
                 <div class="nav-item dropdown">
