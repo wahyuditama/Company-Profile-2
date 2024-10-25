@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2024 at 10:10 AM
+-- Generation Time: Oct 25, 2024 at 05:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,6 +52,51 @@ INSERT INTO `general_setting` (`id`, `website_name`, `website_link`, `website_ph
 (2, 'rozak ibrahim', 'https://ipsum-dolor-site-amet.com', '232334234', 'kozak@gmail.com', 'dfgdfgdfgdf', NULL, NULL, NULL, NULL, NULL, '$pict1.jpg', '2024-10-24 02:39:44', '2024-10-24 07:41:45'),
 (3, 'iki gorro', 'https://kopong.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sayuran1.jpg', '2024-10-24 03:20:09', '2024-10-24 03:20:09');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `instruktur`
+--
+
+CREATE TABLE `instruktur` (
+  `id` int(11) NOT NULL,
+  `nama_instruktur` varchar(50) NOT NULL,
+  `insert_instruktur` varchar(50) NOT NULL,
+  `fb_link` varchar(50) DEFAULT NULL,
+  `ig_link` varchar(50) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `foto` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nama`, `email`, `password`, `foto`, `created_at`, `updated_at`) VALUES
+(1, 'Supri Tubles ', 'admin@gmail.com', '1234', '', '2024-10-22 04:32:15', '2024-10-23 04:24:42'),
+(5, 'rizki123', 'rizky@gmail.com', '1234', '', '2024-10-23 02:55:22', '2024-10-23 02:55:22'),
+(7, 'mrizky', 'm@gmail.com', '1234', '', '2024-10-23 02:55:34', '2024-10-23 02:55:34'),
+(11, 'najkfhakakfli', 'm@gmail.com', '1233', '', '2024-10-23 05:39:50', '2024-10-23 05:39:50'),
+(12, 'tio nugraba', 'admin@gmail.com', '455454546', 'pict1.jpg', '2024-10-23 07:31:43', '2024-10-23 07:31:43'),
+(13, 'ucup', 'ucup@gmail.com', '13444', 'sayuran1.jpg', '2024-10-23 07:34:04', '2024-10-23 07:34:04'),
+(14, '', '', '', '', '2024-10-24 02:00:56', '2024-10-24 02:00:56');
+
 --
 -- Indexes for dumped tables
 --
@@ -63,6 +108,18 @@ ALTER TABLE `general_setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `instruktur`
+--
+ALTER TABLE `instruktur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -71,6 +128,18 @@ ALTER TABLE `general_setting`
 --
 ALTER TABLE `general_setting`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `instruktur`
+--
+ALTER TABLE `instruktur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

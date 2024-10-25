@@ -29,6 +29,13 @@ if (isset($_POST['simpan'])) {
                 die();
             }else{
                 // pindahkan gambar 
+                //unlink 
+                unlink('upload/'.$rowPengaturan['logo']);
+                
+                // upload baru
+                move_uploaded_file($_FILES['foto']['tmp_name'], 'upload/'.$nama_foto);
+                
+                $update = mysqli_query($koneksi,"UPDATE general_setting SET website_name= '$website_name', website_link='$website_link', logo='$$nama_foto' ,website_phone='$website_phone', website_email='$website_email' , website_address='$website_address' WHERE id='$id'");
                 move_uploaded_file($_FILES['foto']['tmp_name'], 'upload/'.$nama_foto);
                 
                 $update = mysqli_query($koneksi,"UPDATE general_setting SET website_name= '$website_name', website_link='$website_link', logo='$$nama_foto' ,website_phone='$website_phone', website_email='$website_email' , website_address='$website_address' WHERE id='$id'");
@@ -197,6 +204,7 @@ $rowPengaturan = mysqli_fetch_assoc($queryPengaturan);
                                 <div class="mb-3">
                                 <label for="">Uplode Foto</label>
                                 <input type="file" class="form-control" name="foto" id="" >
+                                <img src="upload/<?php echo isset($rowPengaturan['logo']) ? $rowPengaturan['logo'] : '' ?>" alt="">
                                 </div>
                               </div>
                               <div class="col-sm-6">

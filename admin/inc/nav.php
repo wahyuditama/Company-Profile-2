@@ -1,8 +1,8 @@
   <?php
   include 'koneksi.php';
 
-  $id = $_SESSION['id'];
-  $sqlLoginUser = mysqli_query($koneksi , "SELECT * FROM users WHERE id = '$id'");
+  // $id = $_SESSION['id'];
+  $sqlLoginUser = mysqli_query($koneksi , "SELECT * FROM users ORDER BY id DESC");
   $rowLoginUser = mysqli_fetch_assoc($sqlLoginUser);
   ?>
   
