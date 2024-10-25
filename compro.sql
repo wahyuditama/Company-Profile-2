@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2024 at 05:28 AM
+-- Generation Time: Oct 25, 2024 at 07:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,12 +61,21 @@ INSERT INTO `general_setting` (`id`, `website_name`, `website_link`, `website_ph
 CREATE TABLE `instruktur` (
   `id` int(11) NOT NULL,
   `nama_instruktur` varchar(50) NOT NULL,
-  `insert_instruktur` varchar(50) NOT NULL,
+  `jurusan_instruktur` varchar(50) NOT NULL,
   `fb_link` varchar(50) DEFAULT NULL,
   `ig_link` varchar(50) DEFAULT NULL,
+  `foto` varchar(100) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `instruktur`
+--
+
+INSERT INTO `instruktur` (`id`, `nama_instruktur`, `jurusan_instruktur`, `fb_link`, `ig_link`, `foto`, `updated_at`, `create_at`) VALUES
+(1, 'pepen natrium', 'pepen@gmail.com', NULL, NULL, 'bw-logo-triangle-shape-circle-260nw-1668737194.jpg', '2024-10-25 04:34:23', '2024-10-25 05:26:16'),
+(2, 'ucup uranium', 'pepen@gmail.com', NULL, NULL, 'sayuran1.jpg', '2024-10-25 04:41:59', '2024-10-25 05:24:56');
 
 -- --------------------------------------------------------
 
@@ -133,7 +142,7 @@ ALTER TABLE `general_setting`
 -- AUTO_INCREMENT for table `instruktur`
 --
 ALTER TABLE `instruktur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
